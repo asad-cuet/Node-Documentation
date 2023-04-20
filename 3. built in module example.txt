@@ -42,9 +42,14 @@ Event Module:
     //or with arguement
 
         //Register a listener
-        emitter.on('messageLogged',function(arg){
-            console.log('call back function', arg);
-        });
+            emitter.on('messageLogged',function(arg){
+                console.log('call back function', arg);
+            });
+
+        or,
+            emitter.on('messageLogged',(arg)=>{
+                console.log('call back function', arg);
+            });
 
         //Raise an event
         emiiter.emit('messageLogged',{id:1, message:'this is the arg'});
