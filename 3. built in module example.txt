@@ -1,0 +1,50 @@
+****
+doc: https://nodejs.org/dist/latest-v18.x/docs/api/
+
+***
+lets see path module:
+
+app.js:
+=======
+
+    const path = require('path');
+
+    console.log(path.parse(__filename))
+
+****
+Error handling in calling method:
+=================================
+app.js:
+=======
+
+    const fs = require('fs');
+
+    fs.readdir('./', function(err,files){
+        if(err) console.log(err);
+        else console.log(files);
+    });
+
+
+****
+Event Module:
+
+    const EventEmitter=require('events')   //it returns a class
+    const emiiter=EventEmitter();
+
+        //Register a listener
+        emitter.on('messageLogged',function(){
+            console.log('call back function');
+        });
+
+        //Raise an event
+        emiiter.emit('messageLogged');
+
+    //or with arguement
+
+        //Register a listener
+        emitter.on('messageLogged',function(arg){
+            console.log('call back function', arg);
+        });
+
+        //Raise an event
+        emiiter.emit('messageLogged',{id:1, message:'this is the arg'});

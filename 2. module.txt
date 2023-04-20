@@ -1,0 +1,101 @@
+*****
+Exvery js file is module
+
+*****
+console.log(module)  //it will show module obj's key
+
+Output:
+=======
+Module {
+
+    id:',',
+    exports:{},
+    parent:null,
+    filename: //containing current file root,
+    loaded:false,
+    children:[],
+    paths:[
+        ........
+        ........
+    ],
+}
+
+*****
+let creae 2 files:
+1.app.js
+2.logger.js
+
+logger.js:
+==========
+    var url='asad-pro.com'
+
+    function log(message)
+    {
+        console.log(message);
+    }
+
+    //exporting for access another file
+
+    module.exports.log=log;
+    module.exports.endPoint=url;
+
+
+    //additional:
+    module.exports=log;  // exporting the function directly
+
+
+
+
+app.js:   [access the logger module in app.js]
+=======
+
+    const logger=require('./logger.js')  //'const' instead of 'var' to declare as constant,its value can't overwrite now.
+
+    console.log(logger)   //output= { log: [Function: log], endPoint:'..' }
+
+    //accessing function:
+    logger.log('Hellow World')
+
+
+    //additional:
+    logger('Hellow World')
+
+
+****
+Module Wrapper Function:
+=========================
+Node doesn't run module. node wrapeer the module as a function like this:
+
+(function (exports, require, module, __filename, __dirname){
+
+    var url='asad-pro.com'
+
+    function log(message)
+    {
+        console.log(message);
+    }
+
+    module.exports.log=log;
+
+
+})
+
+
+You can use these arguements in logger.js:
+
+    console.log(__filename)
+    
+    var url='asad-pro.com'
+
+    function log(message)
+    {
+        console.log(message);
+    }
+
+    module.exports.log=log;
+
+
+****
+Here you can see all modules provided by node:
+    https://nodejs.org/dist/latest-v18.x/docs/api/
+
