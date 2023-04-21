@@ -1,0 +1,25 @@
+./index.js:
+===========
+
+const express=require('express');
+const app=express();
+
+// now app has many method like:
+    // app.get()
+    // app.post()
+    // app.put()
+    // app.delete()
+
+
+///example
+
+app.get('/',(req,res)=>{
+    res.send('Hellow World');
+});
+
+
+app.get('/api',(req,res)=>{
+    res.send([1,2,3]);
+});
+
+app.listen(3000, ()=> { console.log("Listening port 3000..."); })

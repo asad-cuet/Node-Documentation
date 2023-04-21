@@ -1,0 +1,9 @@
+Using this you don't need to rerun server after doing some chage in code
+
+install:
+=======
+npm install -g nodemon
+
+run server:
+===========
+nodemon index.js
