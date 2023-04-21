@@ -1,0 +1,10 @@
+install:
+=======
+run: npm i -g <package-name>@version
+
+install all global package:
+npm -g outdated
+
+
+uninstallation:
+run: npm un -g <package-name>

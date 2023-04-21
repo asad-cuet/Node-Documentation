@@ -1,0 +1,3 @@
+run:
+====
+npm un <package-name>

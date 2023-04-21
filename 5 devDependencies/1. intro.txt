@@ -1,0 +1,6 @@
+It is developement dependencies uses for testing or developerhelp
+it will not go in production level
+
+run:
+====
+npm i jshint --save-dev

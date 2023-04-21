@@ -1,0 +1,29 @@
+*
+its a third party package manager
+
+*
+doc: https://underscorejs.org/
+
+*
+first make package.JSON
+
+*
+run: npm install underscore or, npm i underscore
+
+
+
+Example:
+========
+
+make ./index.js:
+
+var _=require('underscore')
+
+var result= _.contains([1,2,3],2);  
+
+console.log(result);  //out: true
+
+
+Run in terminal:
+================
+node index.js

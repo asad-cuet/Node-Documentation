@@ -1,0 +1,52 @@
+run:
+====
+
+*
+mkdir package-name
+cd package-name
+
+*
+npm init --yes
+
+*
+./index.js:
+-----------
+module.exports.add=function(a,b) { return a+b; }
+
+
+*
+npm login
+
+*
+npm publish
+
+
+Install the package:
+====================
+npm i package-name
+
+
+
+Update the Package:
+===================
+
+*
+./index.js:
+-----------
+module.exports.add=function(a,b) { return a+b; }
+
+module.exports.multiply=function(a,b) { return a*b; }
+
+
+
+run:
+npm version minor    
+
+    // patch for solve bug     // 1.0.1
+
+    // minor for add new feautures   // 1.1.0
+
+    // major for overwrite exting feautures // 2.0.0
+
+*
+npm publish
