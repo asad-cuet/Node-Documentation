@@ -1,0 +1,30 @@
+./logger.js
+============
+function log(req,res,next)
+{
+    console.log('Global middleware');
+    next();  //pass the request to route
+}
+
+module.exports=log
+
+./index.js:
+===========
+const express=require('express');
+const app=express();
+
+app.use(express.json());  //its a builtin middleware
+app.use(express.urlencoded({extended:true}));  //its a builtin middleware
+app.use(express.static('public'));  //defining public folder as a static foloder
+
+
+
+
+app.get('/api/courses',(req,res)=>{
+    res.send('Hellow')
+})
+
+
+const port=process.env.PORT || 3000; 
+
+app.listen(3000, ()=> { console.log(`Listening port ${port}...`); })

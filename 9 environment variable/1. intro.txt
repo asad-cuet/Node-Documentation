@@ -1,0 +1,6 @@
+We need to define or know on which environment (development or production)
+the application running on
+
+Sometimes we need to deactivate some module in production environment
+
+For that we need to detect the environment

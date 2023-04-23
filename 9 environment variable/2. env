@@ -1,0 +1,27 @@
+./index.js:
+===========
+const logger=require('./logger.js')
+const express=require('express');
+const app=express();
+
+
+
+console.log(`Node Env: ${process.env.NODE_ENV}`); //default: undefined
+console.log(`app: ${app.get('env')}`); //default: development
+
+//checking
+if(app.get('env')==='development')
+{
+    app.use(logger);
+    console.log('Logeer Enabled');
+}
+
+
+app.get('/api/courses',(req,res)=>{
+    res.send('Hellow')
+})
+
+
+const port=process.env.PORT || 3000; 
+
+app.listen(3000, ()=> { console.log(`Listening port ${port}...`); })

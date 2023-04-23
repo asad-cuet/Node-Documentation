@@ -1,0 +1,26 @@
+./index.js:
+===========
+
+const express=require('express');
+const app=express();
+
+    
+//defining global middleware
+app.use(req,res,next=>{
+    console.log('Global middleware');
+
+    //next(); //terminating next by commenting
+    //or,
+    next();  //pass the request to route
+});
+
+
+
+app.get('/api/courses',(req,res)=>{
+    res.send('Hellow')
+})
+
+
+const port=process.env.PORT || 3000; 
+
+app.listen(3000, ()=> { console.log(`Listening port ${port}...`); })
