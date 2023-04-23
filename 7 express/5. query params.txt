@@ -1,0 +1,11 @@
+
+app.get('/api/course/:year/:month',(req,res)=>{
+    res.send(req.query);
+})
+
+//
+now if requests like this: api/course/2023/4?sortBy=name
+
+//output: { sortBy:"name" }
+
+

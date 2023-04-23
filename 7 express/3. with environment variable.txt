@@ -1,0 +1,13 @@
+./index.js:
+===========
+
+const express=require('express');
+const app=express();
+
+app.get('/',(req,res)=>{
+    res.send('Hellow World');
+});
+
+const port=process.env.PORT || 3000;  // needs in production level, becauyse port is always dynamic in deployment
+
+app.listen(3000, ()=> { console.log(`Listening port ${port}...`); })

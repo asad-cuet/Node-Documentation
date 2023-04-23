@@ -1,0 +1,23 @@
+./index.js:
+===========
+
+const express=require('express');
+const app=express();
+
+app.get('/',(req,res)=>{
+    res.send('Hellow World');
+});
+
+
+app.get('/api/course/:id',(req,res)=>{
+    res.send(req.params.id);
+})
+
+app.get('/api/course/:year/:month',(req,res)=>{
+    res.send(req.params);
+    //output:  { year:"2023", month:"4" }
+})
+
+const port=process.env.PORT || 3000; 
+
+app.listen(3000, ()=> { console.log(`Listening port ${port}...`); })

@@ -1,0 +1,32 @@
+./index.js:
+===========
+
+const express=require('express');
+const app=express();
+
+//********
+app.use(express.json());
+
+    
+
+app.post('/api/course',(req,res)=>{
+
+    if(!req.body.name || req.body.name.length<3)
+    {
+        res.status(400).send('Bad Request');
+        return;
+    }
+
+
+
+    const new_course={
+        id:courses.length+1,
+        name: req.body.name
+    };
+    courses.push(new_course);
+})
+
+
+const port=process.env.PORT || 3000; 
+
+app.listen(3000, ()=> { console.log(`Listening port ${port}...`); })

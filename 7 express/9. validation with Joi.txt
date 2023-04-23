@@ -1,0 +1,43 @@
+installation:
+=============
+npm i joi
+
+./index.js:
+===========
+const Joi=require('joi')
+const express=require('express');
+const app=express();
+
+//********
+app.use(express.json());
+
+    
+
+app.post('/api/course',(req,res)=>{
+
+    const schema={
+        name:Joi.string.min(3).required
+    };
+
+    const result= Join.validate(req.body,schema);  // { error:'', value{} }
+
+
+    if(result.error)
+    {
+        res.status(400).send(result.error.details[0].message);
+        return;
+    }
+
+
+
+    const new_course={
+        id:courses.length+1,
+        name: req.body.name
+    };
+    courses.push(new_course);
+})
+
+
+const port=process.env.PORT || 3000; 
+
+app.listen(3000, ()=> { console.log(`Listening port ${port}...`); })
