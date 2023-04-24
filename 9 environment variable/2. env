@@ -1,3 +1,12 @@
+*
+Store all password and secret in environment variable
+
+Set env var by cmd: 
+===================
+run: export NODE_ENV=development
+     export app_any=any
+
+
 ./index.js:
 ===========
 const logger=require('./logger.js')

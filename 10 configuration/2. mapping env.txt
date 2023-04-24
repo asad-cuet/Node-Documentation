@@ -1,0 +1,19 @@
+Mapping env in config:
+======================
+run: export app_password=1234
+
+./config/custom-environment-variables.json:
+==========================================
+
+{
+    "name":"My Production App",
+    "password":"app_password"  //app_password is env var
+}
+
+
+./index.js:
+===========
+cosnt config=require('config');  
+
+console.log(config.get('password'));   //out: 1234
+

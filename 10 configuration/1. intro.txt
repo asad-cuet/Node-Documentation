@@ -1,0 +1,38 @@
+*
+don't store password, db like credential here. it will visible by repository
+but you can map env variable name in custom config file
+
+*
+directory: ./config/...
+
+./default.json:     //defaultly run
+===============
+{
+    "name":"My Default App"
+}
+
+./development.json: // run on developement
+===================
+{
+    "name":"My Developement App"
+}
+
+./production.json:  // run on production
+==================
+{
+    "name":"My Production App",
+    "mail":{
+        "host":"......."
+    }
+}
+
+
+Access config:
+==============
+./index.js:
+===========
+cosnt config=require('config');
+
+console.log(`App name: ${config.get('name')}`);
+console.log(`Host: ${config.get('mail.host')}`);
+
