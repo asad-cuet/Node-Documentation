@@ -1,0 +1,37 @@
+*
+It returns html in response
+
+*
+available package: pug, mustache, ejs
+==================
+
+
+installation: npm i pug
+=============
+
+./index.js:
+===========
+const express=require('express');
+const app=express();
+
+app.set('view engine','pug');
+app.set('views','./views');   // defining the location of html file, but it is defaultly sated
+
+app.get('/',(req,res)=>{
+    res.render('index',{title:"Title", message:"My Message"});
+})
+
+
+const port=process.env.PORT || 3000; 
+
+app.listen(3000, ()=> { console.log(`Listening port ${port}...`); })
+
+
+./views/index.pug:
+==================
+
+html
+    head
+        title=title
+    body
+        h1=message
