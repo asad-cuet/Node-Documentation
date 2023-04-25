@@ -1,7 +1,7 @@
 Global object means which can be used in both browser & out of browser
 
 *
-setTimeout()
+setTimeout(()=> {},2000);
 clearTimeout()
 
 
