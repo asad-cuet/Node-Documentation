@@ -1,0 +1,33 @@
+./index.js:
+===========
+
+console.log('Before');
+
+getUser(1,(returned_user)=>{        //catching rteturned data in the parameter
+    console.log(returned_user);
+})
+
+
+console.log('After');
+
+
+
+function getUser(id,callback)
+{
+    setTimeout(()=>{
+
+        console.log('A user from db');
+
+        callback({id:id, name:"Asad"});
+
+    },2000);
+}
+
+
+Output:
+=======
+
+Before
+After                    // showing this first. because of asynchronus js
+A user from db
+{id:id, name:"Asad"}

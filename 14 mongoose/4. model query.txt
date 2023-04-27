@@ -1,0 +1,189 @@
+./index.js:
+===========
+
+
+//connection
+const mongoose=require('mongoose');
+mongoose.connect('mongodb://localhost/dbname')
+    .then(()=> console.log('DB connected..'))
+    .catch(err=> console.log('Could not connected to db..',err));
+
+
+//schema
+const courseSchema=new mongoose.Schema({
+    name:String,
+    author:String,
+    tags:[String],
+    date:{type:Date, default:Date.now},
+    isPublished:Boolean
+});
+
+
+//model
+const Course=mongoose.model('Course',courseSchema);
+
+
+
+***********************
+//create new Course
+async function createCourse()
+{
+    const course=new Course({
+        name:'Node.js Course',
+        author:'Asad',
+        tags:['node','backend'],
+        isPublished:true
+    });
+    const result=await course.save();
+    console.log(result);
+}
+
+
+***********************
+//get course:
+async function getCourses()
+{
+
+    // eq = equal
+    // neq = not equal
+    // gt = greater than
+    // gt = greater than or equal
+    // lt = less than
+    // lte = less than or equal
+    // in   //like whereIn('id',[1,2,3])
+    // nin = not in
+
+    const courses=await Course.
+                //  .find()                                    //all 
+                    .find({author:'Asad', isPublished:true, tags: { $in: ['frontend', 'backend']}})   //works as where
+                //  .find({price:{$gt:10, $lt:20}})            //comparison 
+                    .limit(10)                                 //max quantity
+                    .sort({name:1})                            // 1 for asc,  -1 for desc   //or, .sort('-price')
+                    .select({name:1, tags:1});                 // or, select('name tags')
+    
+    console.log(courses);
+}
+getCourses();
+
+
+
+async function getLogicalCourses()
+{
+    // or
+    // and
+    const courses=await Course.
+                    .find()                                         //all 
+                    .or([{author:'Asad'}, {isPublished:true}, {}])   //works as where
+                    .and([{price:10}, {}, {}])   //works as where 
+                    .limit(10)                                      //max quantity
+                    .sort({name:1})                                 // 1 for asc,  -1 for desc
+                    .select({name:1, tags:1});
+                //  .count();                                       // return quantity  
+    console.log(courses);
+}
+getLogicalCourses();
+
+
+async function getPatternCourses()
+{
+    const courses=await Course.
+
+                    //starts with asad
+                    .find({name:/^asad/})
+
+                    //ends with islam
+                    .find(name:/islam^/i)                           // i for case insensitive 
+
+                    //conians asad, use for search
+                    .find({name: /.*asad.*/i})
+
+                    .limit(10)                                      //max quantity
+                    .sort({name:1})                                 // 1 for asc,  -1 for desc
+                    .select({name:1, tags:1});
+    
+    console.log(courses);
+}
+getPatternCourses();
+
+
+
+async function getPaginationCourses()
+{
+    const pageNumber=2;
+    const pageSize=10;
+    const courses=await Course.
+                    .find()  
+                    .skip((pageNumber-1) * pageSize)                // skipping first 10                                   
+                    .limit(pageSize)                                      
+                    .sort({name:1})                                 // 1 for asc,  -1 for desc
+                    .select({name:1, tags:1}); 
+    console.log(courses);
+}
+getPaginationCourses();
+
+
+
+
+***********************
+//update course
+async function updateCourse(id)
+{
+    const course=await Course.findById(id);
+
+    if(!course) return;
+
+    course.isPublished=false;
+    course.author='another author';
+    const result=course.save();
+    console.log(result);
+
+
+    //or,
+
+    course.set({
+        isPublished:true,
+        author:'another author'
+    });
+}
+updateCourse('.....');
+
+
+//another approach
+async function updateCourse(id)
+{
+    const result=await Course.update({_id:id},{
+        $set:{
+            isPublished:true,
+        author:'another author'
+        }
+    });
+    console.log(result);
+
+
+    //or,
+
+    const course=await Course.findByIdAndUpdate(id,{
+        $set:{
+            isPublished:true,
+        author:'another author'
+        }
+    },{new:true});
+    console.log(course);
+
+
+    //or,
+
+    const result=await Course.update({isPublished:true});    //update all
+    console.log(result);
+
+}
+updateCourse('.....');
+
+
+***********************
+//delete course
+async function nremoveCourse(id)
+{
+    const result=await Course.deleteOne({_id:id});   
+    console.log(result);
+}

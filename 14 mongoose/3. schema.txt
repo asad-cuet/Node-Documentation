@@ -1,0 +1,16 @@
+./index.js:
+===========
+
+const mongoose=require('mongoose');
+
+mongoose.connect('mongodb://localhost/dbname')
+    .then(()=> console.log('DB connected..'))
+    .catch(err=> console.log('Could not connected to db..',err));
+
+const courseSchema=new mongoose.Schema({
+    name:String,
+    author:String,
+    tags:[String],
+    date:{type:Date, default:Date.now},
+    isPublished:Boolean
+});
