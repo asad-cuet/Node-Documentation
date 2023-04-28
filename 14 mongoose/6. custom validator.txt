@@ -1,0 +1,102 @@
+./index.js:
+===========
+
+
+//connection
+const mongoose=require('mongoose');
+mongoose.connect('mongodb://localhost/dbname')
+    .then(()=> console.log('DB connected..'))
+    .catch(err=> console.log('Could not connected to db..',err));
+
+
+//schema
+const courseSchema=new mongoose.Schema({
+    name:{type:String, required:true, minlength5, maxlength:255},
+    category: {
+        type:String,
+        required:true,
+        enum:['watch','mobile','phone']   // value must be one of these
+    }
+    author:String,
+
+
+
+    //********** Custom validator *****
+    tags:{
+        type:Array,
+        validate:{
+            validator: function(v) {
+                return v && v.length>0;
+            },
+            message: 'A course should have at least one tag.'
+        }
+    },
+
+
+
+
+    date:{type:Date, default:Date.now},
+    isPublished:Boolean,
+    price: {
+        type:Number,
+        required: ()=> { return this.isPublishedm },
+        min:10,
+        max:40
+    }
+});
+
+
+//model
+const Course=mongoose.model('Course',courseSchema);
+
+
+
+***********************
+//create new Course
+async function createCourse()
+{
+    const course=new Course({
+        name:'Node.js Course',
+        author:'Asad',
+        tags:['node','backend'],
+        isPublished:true
+    });
+
+    try {
+    const result=await course.save();
+    console.log(result);
+    }
+    catch (err) {
+        console.log(err.message)
+    }
+}
+createCourse();
+
+
+***********************
+//create new Course
+async function createCourse()
+{
+    const course=new Course({
+        name:'Node.js Course',
+        author:'Asad',
+        tags:['node','backend'],
+        isPublished:true
+    });
+
+    try {
+        const isValid= await course.validate();
+        if(isValid)
+        {
+            const result=await course.save();
+            console.log(result);
+        }
+
+    }
+    catch (err) {
+        console.log(err.message)
+    }
+}
+createCourse();
+
+
