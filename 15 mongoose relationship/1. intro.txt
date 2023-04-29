@@ -1,0 +1,19 @@
+There are 3 pattern of relationship:
+
+1. Normalization:
+=================
+    -> Give consistency
+    -> Relation like MySQL
+    -> Need extra query
+
+
+2. Denormalization:
+===================
+    -> Give Performance
+    -> relational data doesn't have external collection.
+    -> Store relational data as a object in a key
+    -> Doesn't need any extra query
+
+3. Hybrid:
+=========
+    -> Cobmination of Normalization & Denormalization

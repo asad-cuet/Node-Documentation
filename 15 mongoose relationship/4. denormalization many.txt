@@ -1,0 +1,75 @@
+//connection
+const mongoose=require('mongoose');
+mongoose.connect('mongodb://localhost/dbname')
+    .then(()=> console.log('DB connected..'))
+    .catch(err=> console.log('Could not connected to db..',err));
+
+
+//Author
+const authorSchema=new mongoose.Schema({
+    name:String,
+    bio:String,
+    website:String,
+});
+const Author=mongoose.model('Author',authorSchema);
+
+//Course
+const courseSchema=new mongoose.Schema({
+    name:String,
+    authors: [authorSchema],    // ******
+});
+const Course=mongoose.model('Course',courseSchema);
+
+
+
+//create new Course
+async function createCourse(name,authors)
+{
+    const course=new Course({ name, authors});
+    const result=await course.save();
+    console.log(result);
+}
+
+
+//add a author in Course->authors
+async function addAuthor(courseId,author)
+{
+    const course=new Course.findById(courseId);
+    course.authors.push(author)
+    console.log(result);
+    course.save();
+}
+
+
+async function removeAuthor(courseId,authorId)
+{
+    const course=new Course.findById(courseId);
+    const author=course.authors.id(authorId)
+    author.remove();
+    course.save();
+}
+
+
+async function updateAuthor(courseId,authorId)
+{
+    const course=new Course.findById(courseId);
+    const author=course.authors.id(authorId)
+    author.name='Asadul Islam';
+    course.save();
+}
+
+
+
+createCourse('Node.js',[
+    new Author({ name:'Asad' }),
+    new Author({ name:'Hamzah' })
+]);   
+
+
+// addAuthor('644d8405e61a24243e663ca2',new Author({ name:'Islam' }));
+
+
+// removeAuthor('','')
+
+
+// updateAuthor('','');

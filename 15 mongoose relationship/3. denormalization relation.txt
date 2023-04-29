@@ -1,0 +1,60 @@
+//connection
+const mongoose=require('mongoose');
+mongoose.connect('mongodb://localhost/dbname')
+    .then(()=> console.log('DB connected..'))
+    .catch(err=> console.log('Could not connected to db..',err));
+
+
+//Author
+const authorSchema=new mongoose.Schema({
+    name:String,
+    bio:String,
+    website:String,
+});
+const Author=mongoose.model('Author',authorSchema);
+
+//Course
+const courseSchema=new mongoose.Schema({
+    name:String,
+    author: authorSchema,    // ******
+    //or for require
+    author: {
+        type: authorSchema,
+        required: true
+    }
+});
+const Course=mongoose.model('Course',courseSchema);
+
+
+
+//create new Course
+async function createCourse(name,author)
+{
+    const course=new Course({ name, author});
+    const result=await course.save();
+    console.log(result);
+}
+
+
+async function updateCourse(id)
+{
+    const course= await Course.findById(id);
+    course.author.name='Asadul Islam';
+    course.save();
+    console.log(course);
+
+    //or,
+    const course2= await Course.update({_id:id},{
+        $set:{
+            'author.name':'Asadul Islam'
+        }
+    });
+    console.log(course2);
+
+
+}
+
+
+
+// createCourse('Node.js',new Author({ name:'Asad' }));   //it will create only Course, & inside that author will available in author key
+updateCourse('644d8405e61a24243e663ca2');

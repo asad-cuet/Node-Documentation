@@ -1,0 +1,26 @@
+_id= 644d8405e61a24243e663ca2    
+=============================
+
+-> it has 24 character
+-> every 2 character is 1 byte
+-> So it has 12 byte
+    -> 4 bytes = timestamp
+    -> 3 byres = machine identifier
+    -> 2 bytes = process identifier
+    -> 3 bytes = counter
+
+
+Generate programically:
+=======================
+const mongoose= require('mongoose')
+
+const id= new mongoose.Types.ObjectId();
+
+console.log(id);
+
+//timestamp
+console.log(id.getTimestamp());
+
+
+//check validity
+mongoose.Types.ObjectId.isValid('1234');   //output: false
