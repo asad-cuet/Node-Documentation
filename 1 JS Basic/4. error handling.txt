@@ -1,0 +1,52 @@
+Throw, and Try...Catch...Finally
+================================
+    -> The try statement defines a code block to run (to try).
+
+    -> The catch statement defines a code block to handle any error.
+
+    -> The finally statement defines a code block to run regardless of the result.
+
+    -> The throw statement defines a custom error.
+
+
+catch:
+======
+    try {
+        //test code
+    }
+    catch(err) {
+    console.log(err.message);
+    }
+
+
+throw & final:
+==============
+    let x = 'any value';
+    try {
+        if(x.trim() == "") throw "empty";
+        if(isNaN(x)) throw "not a number";
+        x = Number(x);
+        if(x < 5) throw "too low";
+        if(x > 10) throw "too high";
+    }
+    catch(err) {
+        console.log( "Input is " + err );
+    }
+    finally {
+        //code if no error
+    }
+
+
+catch(err) Object Details:
+==========================
+
+    -> name	  
+        - types of err.name:
+            - EvalError	        -> its not available newer version of js
+            - RangeError	    -> if you use a number that is outside the range of legal values
+            - ReferenceError	-> if you use (reference) a variable that has not been declared
+            - SyntaxError       -> if you try to evaluate code with a syntax error.	
+            - TypeError	        -> if you use a value that is outside the range of expected types
+            - URIError          -> if you use illegal characters in a URI(try) function
+
+    -> message	Sets or returns an error message (a string)

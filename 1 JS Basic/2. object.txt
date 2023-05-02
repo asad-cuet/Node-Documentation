@@ -1,0 +1,58 @@
+Define Ways:
+============
+    const person = {
+    firstName: "John",
+    lastName : "Doe",
+    id       : 5566,
+    fullName : function() {
+        return this.firstName + " " + this.lastName;
+    }
+    };
+
+
+
+Warning!!!
+==========
+
+    -> Do Not Declare Strings, Numbers, and Booleans as Objects!
+    -> When a JavaScript variable is declared with the keyword "new", the variable is created as an object:
+
+        x = new String();        // Declares x as a String object
+        y = new Number();        // Declares y as a Number object
+        z = new Boolean();       // Declares z as a Boolean object
+
+
+    -> Avoid String, Number, and Boolean objects. 
+    -> They complicate your code and slow down execution speed.
+
+
+
+Set Methods:
+============
+    Method	                Description
+
+    new Set()	            Creates a new Set
+
+        add()	                Adds a new element to the Set
+        delete()	            Removes an element from a Set
+        has()	                Returns true if a value exists
+        clear()	                Removes all elements from a Set
+        forEach()	            Invokes a callback for each element
+        values()	            Returns an Iterator with all the values in a Set
+        keys()	                Same as values()
+        entries()	            Returns an Iterator with the [value,value] pairs from a Set
+
+
+Map Methods:
+============
+    Method	                    Description
+    new Map()	                Creates a new Map object
+    set()	                    Sets the value for a key in a Map
+    get()	                    Gets the value for a key in a Map
+    clear()	                    Removes all the elements from a Map
+    delete()	                Removes a Map element specified by a key
+    has()	                    Returns true if a key exists in a Map
+    forEach()	                Invokes a callback for each key/value pair in a Map
+    entries()	                Returns an iterator object with the [key, value] pairs in a Map
+    keys()	                    Returns an iterator object with the keys in a Map
+    values()	                Returns an iterator object of the values in a Map

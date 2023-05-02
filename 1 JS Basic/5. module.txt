@@ -1,0 +1,67 @@
+Modules:
+========
+    -> JavaScript modules allow you to break up your code into separate files.
+
+    -> This makes it easier to maintain a code-base.
+
+    -> Modules are imported from external files with the import statement.
+
+    -> Modules also rely on type="module" in the <script> tag.
+
+
+    -> Example:
+
+        import message from "./message.js";
+
+Exports is Module File:
+=======================
+    -> There are two types of exports: 
+        - Named Exports  
+        - Default Exports.
+
+Named Exports:
+==============
+    -> example:
+
+        export const name = "Jesse";
+        export const age = 40;
+
+        //or
+
+        const name = "Jesse";
+        const age = 40;
+        export {name, age};
+
+
+
+Default Exports:
+================
+    -> You can only have one default export in a file.
+    -> example:
+
+        const message = () => {
+        const name = "Jesse";
+        const age = 40;
+        return name + ' is ' + age + 'years old.';
+        };
+
+        export default message;
+
+
+Import from named exports:
+==========================
+    ->
+        import { name, age } from "./person.js";
+
+        //or
+
+        import person from "./person.js";
+
+        console.log(person.name);
+        console.log(person.age);
+
+
+Import from default exports:
+============================
+    ->
+        import message from "./message.js";

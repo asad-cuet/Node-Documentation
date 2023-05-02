@@ -1,0 +1,34 @@
+Array Define Ways:
+=================
+    const points = new Array(40, 100, 1, 5, 25, 10);
+    const points = [40, 100, 1, 5, 25, 10];
+
+    ->These two different statements both create a new array containing 6 numbers
+
+Associative Arrays:
+===================
+    -> Many programming languages support arrays with named indexes.
+
+    -> Arrays with named indexes are called associative arrays (or hashes).
+
+    -> **** JavaScript does not support arrays with named indexes. *******
+
+    -> In JavaScript, arrays always use numbered indexes.
+
+
+WARNING !!
+==========
+    -> If you use named indexes, JavaScript will redefine the array to an object.
+
+    -> After that, some array methods and properties will produce incorrect results.
+
+    -> Example:
+        const person = [];
+        person["firstName"] = "John";
+        person["lastName"] = "Doe";
+        person["age"] = 46;
+        person.length;     // Will return 0
+        person[0];         // Will return undefined
+
+
+

@@ -1,0 +1,47 @@
+Async Syntax:
+=============
+    -> The keyword async before a function makes the function return a promise
+
+        async function myFunction() {
+            return "Hello";
+        }
+
+        //same as
+
+        function myFunction() {
+            return Promise.resolve("Hello");
+        }
+
+Example:
+========
+    async function myFunction() {
+        return "Hello";
+    }
+
+    myFunction().then(
+        function(value) {console.log(value);},
+        function(error) {console.log(error);}
+    );
+
+
+Await Syntax:
+=============
+    -> The await keyword can only be used inside an async function.
+
+    -> The await keyword makes the function pause the execution and wait for a resolved promise before it continues:
+
+        let value = await promise;
+
+
+Example:
+========
+    async function myDisplay() {
+        
+        let myPromise = new Promise(function(resolve) {
+            setTimeout(function() {resolve("I love You !!");}, 3000);
+        });
+
+        document.getElementById("demo").innerHTML = await myPromise;
+    }
+
+    myDisplay();
