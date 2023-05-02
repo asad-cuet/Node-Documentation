@@ -18,17 +18,27 @@ Associative Arrays:
 
 WARNING !!
 ==========
+    -> An array declared with const cannot be reassigned, but can change & push
+    
+            const cars = ["Saab", "Volvo", "BMW"];
+            cars = ["Toyota", "Volvo", "Audi"];    // ERROR
+
+            cars[0] = "Toyota";
+
+            cars.push("Audi");
+
+
     -> If you use named indexes, JavaScript will redefine the array to an object.
 
     -> After that, some array methods and properties will produce incorrect results.
 
     -> Example:
-        const person = [];
-        person["firstName"] = "John";
-        person["lastName"] = "Doe";
-        person["age"] = 46;
-        person.length;     // Will return 0
-        person[0];         // Will return undefined
+            const person = [];
+            person["firstName"] = "John";
+            person["lastName"] = "Doe";
+            person["age"] = 46;
+            person.length;     // Will return 0
+            person[0];         // Will return undefined
 
 
 
