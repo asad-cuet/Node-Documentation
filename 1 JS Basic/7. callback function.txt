@@ -1,17 +1,6 @@
 ./index.js:
 ===========
 
-console.log('Before');
-
-getUser(1,(returned_user)=>{        //catching rteturned data in the parameter
-    console.log(returned_user);
-})
-
-
-console.log('After');
-
-
-
 function getUser(id,callback)
 {
     setTimeout(()=>{
@@ -22,6 +11,18 @@ function getUser(id,callback)
 
     },2000);
 }
+
+
+
+console.log('Before');
+
+getUser(1,(returned_user)=>{        //catching returned data in the parameter
+    console.log(returned_user);
+})
+
+
+console.log('After');
+
 
 
 Output:
