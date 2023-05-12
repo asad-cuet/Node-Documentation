@@ -1,0 +1,30 @@
+JavaScript filter() method: 
+===========================
+This method returns a new array containing the elements that pass a certain 
+test performed on an original array.
+
+Syntax:
+========
+    let newArray = oldArray.filter((currentValue, index, array) {
+        // Returns element to new Array
+    });
+
+
+
+Parameters:
+===========
+currentValue: The current element’s value.
+-------------
+index: The current element’s array index.
+------
+array: The array object to which the current element belongs.
+------
+
+
+Return Type: 
+=============
+A new array object containing the filtered elements that 
+satisfied the condition of the function. 
+
+**For those element, which won't satisfy the condition,
+that will not go to new array

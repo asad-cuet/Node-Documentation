@@ -1,0 +1,37 @@
+JavaScript map() method: 
+========================
+This method is used to apply a function on every element in an array and 
+returns a new array of the same size as the input array.
+
+Syntax:
+========
+    let newArray = oldArray.map((currentValue, index, array) {
+        // Returns element to new Array
+    });
+
+
+Parameters:
+===========
+currentValue: The current element’s value.
+-------------
+index: The current element’s array index.
+------
+array: The array object to which the current element belongs.
+------
+
+
+Return Value: 
+=============
+It returns a new array and elements of arrays are the result 
+of the callback function. 
+
+
+**returns a new array of the same size as the input array.
+
+
+** it doesn't eliminate any value like filter. it returns all value of 
+old array
+
+
+**it just modify the every element of old array according to function,
+and return to new array
