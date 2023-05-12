@@ -29,7 +29,7 @@ const express=require('express');
 const router=express();
 
 const courses=require('./routes/courses');
-app.use('/api/courses',courses);  // tails that, url starts with '/api/courses'-> use courses module
+app.use('/api/courses',courses);  // tells that, url starts with '/api/courses'-> use courses module
 
 
 const port=process.env.PORT || 3000; 
