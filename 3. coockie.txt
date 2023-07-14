@@ -23,9 +23,9 @@ app.get('/set',(req,res)=>{
 app.get('get',(req,res)=>{
     cookieFromUser=req.cookies;    
     return res.send(cookieFromUser);
-})
+});
 
 app.get('/destroy',(req,res)=>{
     res.clearCookie('user');
     return res.send('Cookie destroyed successfully');
-})
+});
