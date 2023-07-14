@@ -21,7 +21,7 @@ Module {
 }
 
 *****
-let creae 2 files:
+let create 2 files:
 1.app.js
 2.logger.js
 

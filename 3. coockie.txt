@@ -1,0 +1,31 @@
+installation:
+=============
+npm i cookie-parser
+
+
+Uses:
+======
+const express=require('express');
+const app=express();
+
+const cookies=require('cookie-parser');
+app.use(cookies());
+
+app.get('/set',(req,res)=>{
+    let user={
+        name:'Asad',
+        age:24
+    };
+    res.cookie('user',user); //creatring
+    return res.send("Cookie Created");
+});
+
+app.get('get',(req,res)=>{
+    cookieFromUser=req.cookies;    
+    return res.send(cookieFromUser);
+})
+
+app.get('/destroy',(req,res)=>{
+    res.clearCookie('user');
+    return res.send('Cookie destroyed successfully');
+})

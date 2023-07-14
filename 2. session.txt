@@ -1,0 +1,33 @@
+installation:
+=============
+npm i express-session
+
+
+uses:
+======
+const express=require('express');
+const app=express();
+const session=require('express-session');
+
+app.use(session({
+    secret:'Your secret key',
+    resave:true,
+    saveUninitialized:true
+}));
+
+app.get('/set-session',(req,res)=>{
+    req.session.name="My Name";
+    return res.send("Session Sated");
+});
+
+app.get('get-session',(req,res)=>{
+    var name=req.session.name;
+    return res.send(name);
+});
+
+app.get('destroy-session',(req,res)=>{
+    req.session.destroy(function(error){
+        console.log('Session Destroyed');
+    });
+    res.end();
+});

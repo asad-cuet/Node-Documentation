@@ -1,0 +1,3 @@
+//use express-async-errors packgae to run all route throug try-catch block
+
+// Used in authentication project

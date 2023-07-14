@@ -1,6 +1,6 @@
 Mapping env in config:
 ======================
-run: export app_password=1234
+run: set app_password=1234
 
 ./config/custom-environment-variables.json:
 ==========================================
